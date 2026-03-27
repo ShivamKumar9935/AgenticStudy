@@ -14,8 +14,10 @@ function App() {
   const [activeTab, setActiveTab] = useState('questions'); // 'questions' | 'pdf' | 'videos'
   const [serverStatus, setServerStatus] = useState('checking'); // 'checking', 'connected', 'error'
   
-  // Get API URL from environment or use default
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+  // Normalize API URL so requests always target /api routes.
+  const rawApiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+  const trimmedApiUrl = rawApiUrl.replace(/\/+$/, '');
+  const API_URL = trimmedApiUrl.endsWith('/api') ? trimmedApiUrl : `${trimmedApiUrl}/api`;
 
   /**
    * Check if backend server is running and accessible
