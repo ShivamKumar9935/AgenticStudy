@@ -6,7 +6,7 @@ import React, { useState, useRef } from 'react';
 import '../styles/PDFSummarizer.css';
 
 function PDFSummarizer({ apiUrl }) {
-  const API_BASE = process.env.REACT_APP_CLIENT_API_BASE || 'http://localhost:3000';
+  const API_URL = apiUrl;
 
   // State management
   const [file, setFile] = useState(null);
@@ -69,7 +69,7 @@ function PDFSummarizer({ apiUrl }) {
       formData.append('file', file);
 
       // Call backend API
-      const response = await fetch(`${API_BASE}/summarize`, {
+      const response = await fetch(`${API_URL}/summarize-pdf`, {
         method: 'POST',
         body: formData
       });
