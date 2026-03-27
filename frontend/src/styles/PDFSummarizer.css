@@ -1,0 +1,295 @@
+/* PDF Summarizer Styles */
+.pdf-summarizer {
+  padding: 0;
+  min-height: 600px;
+}
+
+.ps-container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+}
+
+/* Upload Section */
+.upload-section h2 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  color: #666;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+/* Form Styles */
+.ps-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Upload Area */
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.upload-zone {
+  border: 2px dashed #667eea;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #f9faff;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-zone:hover {
+  border-color: #764ba2;
+  background: #f0f3ff;
+}
+
+.upload-zone.drag-over {
+  border-color: #764ba2;
+  background: #e3f2fd;
+  transform: scale(1.02);
+}
+
+.upload-zone.has-file {
+  border-color: #4caf50;
+  background: #f1f8e9;
+  border-style: solid;
+}
+
+/* Upload Prompt */
+.upload-prompt {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.upload-icon {
+  font-size: 2.5rem;
+  display: block;
+}
+
+.upload-prompt p {
+  margin: 0;
+  color: #666;
+}
+
+.upload-prompt p:first-of-type {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.upload-subtext {
+  font-size: 0.9rem;
+  color: #999 !important;
+}
+
+/* File Selected */
+.file-selected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.file-icon {
+  font-size: 2rem;
+  display: block;
+}
+
+.file-name {
+  font-weight: 600;
+  color: #2c3e50;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+.file-size {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+/* Summary Section */
+.summary-section-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.summary-section-container h2 {
+  color: #2c3e50;
+}
+
+.summary-card {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+.summary-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.summary-section {
+  line-height: 1.8;
+}
+
+.summary-section h3 {
+  color: #667eea;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.summary-section p {
+  margin: 0 0 0.5rem 0;
+  color: #555;
+}
+
+.bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bullet-list li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+  color: #555;
+  line-height: 1.6;
+}
+
+.bullet-list li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.section-text {
+  color: #555;
+  line-height: 1.8;
+}
+
+/* Summary Actions */
+.summary-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Empty State */
+.empty-state-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 300px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  display: block;
+}
+
+.empty-state p {
+  margin: 0;
+  color: #666;
+}
+
+.empty-state p:first-of-type {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.empty-subtitle {
+  font-size: 0.95rem;
+  max-width: 300px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ps-container {
+    padding: 1.5rem;
+  }
+
+  .upload-zone {
+    min-height: 150px;
+    padding: 1.5rem;
+  }
+
+  .upload-icon {
+    font-size: 2rem;
+  }
+
+  .summary-card {
+    padding: 1.5rem;
+    max-height: 400px;
+  }
+
+  .summary-section h3 {
+    font-size: 1rem;
+  }
+
+  .bullet-list li {
+    padding: 0.4rem 0 0.4rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .summary-actions {
+    flex-direction: column;
+  }
+
+  .btn-secondary {
+    width: 100%;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .upload-area,
+  .summary-actions,
+  .btn-secondary {
+    display: none;
+  }
+
+  .summary-card {
+    background: white;
+    border: none;
+    padding: 0;
+  }
+}
