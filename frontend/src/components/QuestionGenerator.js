@@ -7,7 +7,7 @@ import axios from 'axios';
 import '../styles/QuestionGenerator.css';
 
 function QuestionGenerator({ apiUrl }) {
-  const API_BASE = process.env.REACT_APP_CLIENT_API_BASE || 'http://localhost:3000';
+  const API_BASE = apiUrl.replace('/api', '');
 
   // State management
   const [topic, setTopic] = useState('');
@@ -15,7 +15,6 @@ function QuestionGenerator({ apiUrl }) {
   const [chatQuestion, setChatQuestion] = useState('');
   const [questions, setQuestions] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
-  const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [messages, setMessages] = useState([]); // Chat-like messages
@@ -34,7 +33,6 @@ function QuestionGenerator({ apiUrl }) {
 
     setLoading(true);
     setError('');
-    setAnswer('');
     setSelectedQuestion(null);
 
     try {
@@ -141,7 +139,6 @@ function QuestionGenerator({ apiUrl }) {
     setSelectedQuestion(question);
     setLoading(true);
     setError('');
-    setAnswer('');
 
     try {
       console.log(`🤖 Getting answer for: "${question.question}"`);
@@ -152,8 +149,8 @@ function QuestionGenerator({ apiUrl }) {
       });
 
       const answerText = response.data.answer;
-      setAnswer(answerText);
 
+    
       // Add Q&A to chat
       const qMessage = {
         type: 'question',
@@ -185,7 +182,6 @@ function QuestionGenerator({ apiUrl }) {
     setChatQuestion('');
     setQuestions([]);
     setSelectedQuestion(null);
-    setAnswer('');
     setError('');
   };
 

@@ -2,7 +2,7 @@
 // This component serves as the main container for the AI Study Assistant
 // It manages the overall layout and tabs between different features
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import QuestionGenerator from './components/QuestionGenerator';
 import PDFSummarizer from './components/PDFSummarizer';
@@ -17,15 +17,10 @@ function App() {
   // Get API URL from environment or use default
   const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
-  // Check if backend server is running on component mount
-  useEffect(() => {
-    checkServerHealth();
-  }, []);
-
   /**
    * Check if backend server is running and accessible
    */
-  const checkServerHealth = async () => {
+  const checkServerHealth = useCallback(async () => {
     try {
       const response = await axios.get(`${API_URL.replace('/api', '')}/api/health`, {
         timeout: 5000
@@ -39,7 +34,12 @@ function App() {
       setServerStatus('error');
       console.error('❌ Backend server is not accessible:', error.message);
     }
-  };
+  }, [API_URL]);
+
+  // Check if backend server is running on component mount
+  useEffect(() => {
+    checkServerHealth();
+  }, [checkServerHealth]);
 
   return (
     <div className="app-container">
